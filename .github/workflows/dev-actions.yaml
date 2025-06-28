@@ -18,5 +18,12 @@ jobs:
     needs: dev-action-job
     runs-on: ubuntu-latest
     steps:
+      - name: Get code from repository
+        uses: actions/checkout@v4
+      - name: Node.js setup
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
       - name: Build project
         run: npm run build
