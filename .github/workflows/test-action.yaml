@@ -1,0 +1,19 @@
+name: Dev action yaml
+on: push
+jobs:
+  dev-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      - name: Node JS Setup
+        uses: actions/setup-node@v2
+        with:
+          node-version: "18"
+      - name: Install All dependencies
+        run: npm ci
+      - name: Run the Dev action
+        run: npm run dev
+      - name: Getting the GitHub output
+        run: |
+          echo "The output is: ${{ toJson(github) }}"
